@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	x:Class="MauiTabs.MainPage"
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:dt="clr-namespace:MauiTabs">
+
+	<ScrollView>
+		<VerticalStackLayout>
+			<HorizontalStackLayout BindableLayout.ItemsSource="{Binding MenuItems}"
+								   RadioButtonGroup.GroupName="MenuCategories" 
+								   RadioButtonGroup.SelectedValue="{Binding Selected}">
+				<BindableLayout.ItemTemplate>
+					<DataTemplate x:DataType="dt:MenuItem">
+						<RadioButton
+							x:Name="radio"
+							Margin="0,0,15,0"
+							Content="{Binding Text}"
+							GroupName="MenuCategories"
+							Value="{Binding Value}">
+							<RadioButton.ControlTemplate>
+								<ControlTemplate>
+									<Grid RowDefinitions="30,4">
+										<Label x:Name="TextLabel" Text="{TemplateBinding Content}" />
+										<BoxView
+											x:Name="Indicator"
+											Grid.Row="1"
+											Color="Transparent" />
+										<VisualStateManager.VisualStateGroups>
+											<VisualStateGroupList>
+												<VisualStateGroup x:Name="CheckedStates">
+													<VisualState x:Name="Checked">
+														<VisualState.Setters>
+															<Setter TargetName="TextLabel" Property="Label.TextColor" Value="{StaticResource Primary}" />
+															<Setter TargetName="Indicator" Property="BoxView.Color" Value="{StaticResource Primary}" />
+														</VisualState.Setters>
+													</VisualState>
+
+													<VisualState x:Name="Unchecked">
+														<VisualState.Setters>
+															<Setter TargetName="TextLabel" Property="Label.TextColor" Value="Black" />
+															<Setter TargetName="Indicator" Property="BoxView.Color" Value="Transparent" />
+														</VisualState.Setters>
+													</VisualState>
+												</VisualStateGroup>
+											</VisualStateGroupList>
+										</VisualStateManager.VisualStateGroups>
+									</Grid>
+								</ControlTemplate>
+							</RadioButton.ControlTemplate>
+						</RadioButton>
+					</DataTemplate>
+				</BindableLayout.ItemTemplate>
+			</HorizontalStackLayout>
+			<HorizontalStackLayout>
+				<Label Text="Your selection:" />
+				<Label x:Name="labelSelection" Text="{Binding Selected}" />
+			</HorizontalStackLayout>
+		</VerticalStackLayout>
+	</ScrollView>
+
+</ContentPage>
