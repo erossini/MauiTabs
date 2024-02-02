@@ -1,5 +1,5 @@
 # Tabs for MAUI
-Simple tabs implementation for MAUI
+Simple tabs implementation for MAUI. For more information about this code, please visit the related post on [PureSourceCode](https://puresourcecode.com/dotnet/maui/create-tabbar-in-maui/).
 
 ## Screenshot
 
